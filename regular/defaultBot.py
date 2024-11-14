@@ -8,7 +8,7 @@ import os
 # os.system("pip uninstall -y gradio")
 # os.system("pip install gradio==3.50.2")
 
-openai.api_key = "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"
+openai.api_key = "API KEY HERE"
 conversations = {}
 
 def echo(params):
