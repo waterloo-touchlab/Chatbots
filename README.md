@@ -1,44 +1,61 @@
-# Mansplain Study Repository
+# 🧠 Mansplain Study Repository
 
-This repository supports a research study examining gender dynamics and perceived tone in chatbot interactions. The study includes three different chatbot conditions—**Compassionate**, **Default**, and **Mansplain**—each implemented as a standalone Gradio app. 
+This repository supports a research study examining **gender dynamics** and **perceived tone** in chatbot interactions. The study includes three different chatbot conditions:
 
-A transcription tool is also included to assist with converting participant recordings into text using Whisper and Streamlit.
+- **Compassionate**
+- **Default**
+- **Mansplain**
 
----
+Each condition is implemented as a standalone [Gradio](https://www.gradio.app/) app.
 
-## Overview
-
-- **Chatbot Conditions**: Each folder under study/ contains one condition of the chatbot experiment, implemented using [Gradio](https://www.gradio.app/). Each app includes logic for interactive conversations and stores chat logs to a local folder named data/.
-
-- **Transcription Tool**: A separate tool is included to assist researchers in transcribing audio responses from participants. This tool is built with [Streamlit](https://streamlit.io/) and uses [OpenAI Whisper](https://github.com/openai/whisper) for transcription.
+A separate **transcription tool** is also included for converting participant recordings into text using [Whisper](https://github.com/openai/whisper) and [Streamlit](https://streamlit.io/).
 
 ---
 
+## 📁 Overview
 
-Running the Apps
+### Chatbot Conditions
 
-Chatbot Conditions
-In each app.py file, set your OpenAI API key:
+- Located under the `study/` directory.
+- Each folder (`mansplain/`, `default/`, `compassionate/`) includes an `app.py` file implementing a standalone Gradio app.
+- Conversations are logged as `.csv` files in a local `data/` folder inside each condition's directory.
+
+### 📝 Transcription Tool
+
+- A separate tool (`transcribe.py`) is included to transcribe participant audio.
+- Built using **Streamlit** and integrates **OpenAI Whisper** for automatic speech-to-text.
+
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Install required libraries:
+  ```bash
+  pip install openai gradio streamlit
+  pip install git+https://github.com/openai/whisper.git
+
+## Running the Apps
+
+### Chatbot Conditions
+
+**Set your OpenAI API key** in the `condition.py` files:
+
+
 openai.api_key = "your-openai-api-key"
 
-Each chatbot condition is a separate Gradio app. To run one:
+## Deployment with NGINX and systemd
 
-Replace mansplain with default or compassionate to run the others.
+To run the apps as background services and serve them using NGINX:
 
-Conversation logs are saved under the respective data/ folder as CSVs
+### 🖥 Restarting All Services
 
-Logs are tied to participants via a query parameter (?id=participant123)
+Use the following commands to restart the services:
 
-
-
-Transcription Tool
-streamlit run transcribe.py
-This launches a web-based UI for uploading participant audio and generating transcripts using Whisper.
-
-📄 Conversation Logging
-Each app logs conversations as CSV files named after the user ID (e.g., participant123.csv)
-
-Logs include role-labeled entries (system, user, assistant) and timestamps
-
-Files are stored in data/ inside the corresponding condition folder
-
+```bash
+  sudo systemctl restart nginx
+  sudo systemctl restart study-condition1
+  sudo systemctl restart study-condition2
+  sudo systemctl restart study-condition3
