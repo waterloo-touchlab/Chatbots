@@ -84,7 +84,9 @@ Use the following commands to restart the services:
 
 The conditions will run at: 
 https://touchlab-research.uwaterloo.ca/condition1/?id=123
+
 https://touchlab-research.uwaterloo.ca/condition2/?id=123
+
 https://touchlab-research.uwaterloo.ca/condition3/?id=123
 
 ### Running the Transcription Tool
