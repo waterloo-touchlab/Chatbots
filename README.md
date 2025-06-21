@@ -17,7 +17,7 @@ A separate **transcription tool** is also included for converting participant re
 ### Chatbot Conditions
 
 - Located under the `study/` directory.
-- Each folder (`mansplain/`, `default/`, `compassionate/`) includes an `app.py` file implementing a standalone Gradio app.
+- Each folder (`mansplain/`, `regular/`, `nonMansplain/`) includes an `app.py` file implementing a standalone Gradio app.
 - Conversations are logged as `.csv` files in a local `data/` folder inside each condition's directory.
 
 #### Conversation Logging
